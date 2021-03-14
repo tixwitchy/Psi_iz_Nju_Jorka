@@ -31,26 +31,20 @@ output:
     <img class="center" height="500" src="images/DogCOV.jpg">
 </section>
 
-## Pre radionice 
-<style type="text/css">
-  .reveal p {
-    text-align: left;
-  }
-  .reveal ul {
-    display: block;
-  }
-  .reveal ol {
-    display: block;
-  }
-</style>
-- Instalirajte R: https://cran.r-project.org/  
+## Pre radionice
 
-- Instalirajte R-Studio: https://rstudio.com/products/rstudio/download/  
+- Instalirajte R: 
+  - https://cran.r-project.org/  
 
-- Otvorite nalog na Netlify: https://app.netlify.com  
+- Instalirajte R-Studio:
+  - https://rstudio.com/products/rstudio/download/  
+
+- Otvorite nalog na Netlify: 
+  - https://app.netlify.com  
 
 
 ## Cilj ove vežbe
+
 
 - Upoznaćemo kako R funkcioniše
 
