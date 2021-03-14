@@ -31,6 +31,15 @@ output:
     <img class="center" height="500" src="images/DogCOV.jpg">
 </section>
 
+## Pre radionice
+
+- Instalirajte R -
+
+- Instalirajte R Studio -
+
+- Otvorite nalog na Netlify - https://app.netlify.com  
+
+
 ## Cilj ove vežbe
 
 - Upoznaćemo kako R funkcioniše
@@ -39,7 +48,7 @@ output:
 
 - Samo ćemo se dotaći nekoliko R paketa poput delova paketa tidyverse (dplyr i ggplot2) 
 
-- Napravićemo panel sa informacijama koje se nalaze u skupu podataka ujedi pasa
+- Napravićemo [panel sa informacijama koje se nalaze u skupu podataka ujedi pasa](https://tixwitchy.github.io/Psi_iz_Nju_Jorka/Psi-iz-Nju-Jorka.html)
 
 ## Vežba{align=right}
 
@@ -76,7 +85,7 @@ install.packages(c("flexdashboard", "tidyverse", "plotly", "DT"))
 
 ## Paketi i biblioteke 
 
-Kada instalirate R, imate osnovne funkcije koje su vam na raspolaganju u okviru tzv.  Base R (osnovnog R-a). Možete više da se informišete o ovome tako što ćete pogledati [Uvod u Base R](https://tanjakec.github.io/blog/introduction-to-r/).
+Kada instalirate R, imate osnovne funkcije koje su vam na raspolaganju u okviru tzv.  Base R (osnovnog R-a).
 
 Medjutim, kako biste pristupili funkcijama ili podacima koje su drugi ljudi napravili ili prikupili postoje brojni R paketi koji su vam na raspolaganju. 
 
@@ -418,7 +427,6 @@ podacipsisterilisanpol <- podacipsi2017 %>%
                         sterilisan, '<br>',#"<br>" se koristi da naznači kraj reda
                         
                         "Broj ujeda:", n, '<br>',
-                        
                         "Pol:", pol, '<br>'))  
 ```
 
