@@ -415,7 +415,6 @@ podacipsisterilisanpol <- podacipsi2017 %>%
   tally () %>%        #izračunava broj ujeda na osnovu ove dve grupe
   
   mutate (Info = paste ('<br>', "Sterilisan:", # Kreiranje nove varijable Info koja će služiti za prikazivanje informacija
-                        
                         sterilisan, '<br>',#"<br>" se koristi da naznači kraj reda
                         
                         "Broj ujeda:", n, '<br>',
@@ -486,7 +485,7 @@ p1
 ## Panel je završen 
 
 <section>
-<a href="https://tixwitchy.github.io/Dogs-of-New-York/Dogs-of-New-York.html">
+<a href="https://tixwitchy.github.io/Psi_iz_Nju_Jorka/Psi-iz-Nju-Jorka.html">
 <img class="center" height="500" src="images/Completedashboard.png"> </a>
 </section>
 
