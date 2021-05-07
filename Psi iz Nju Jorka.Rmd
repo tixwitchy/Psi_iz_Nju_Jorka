@@ -2,7 +2,7 @@
 title: "Ujedi pasa u Nju Jorku u 2017. godini"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
+    orientation: rows
     vertical_layout: fill
     theme: united
 ---
@@ -33,11 +33,6 @@ podacipsidistrikt <- podacipsi2017 %>%
   mutate (perc = round ((n/sum(n)) * 100, 0))
 
 
-#Objekat za pravljenje tabele
-
-podacipsitabela <- podacipsi2017 %>%
-  select (-poštanski_broj)
-
 #Kreiranje podskupa sa tri rase sa najvećim brojem ujeda za stubičasti grafikon 
 
 podacipsirasa <- podacipsi2017 %>%
@@ -56,55 +51,28 @@ podacipsirasa <- podacipsi2017 %>%
 
 podacipsirasa$rasa <- factor (podacipsirasa$rasa,
                                levels = c ("Pit Bull", "Nepoznata", "Shih Tzu"))
+
+
+#Objekat za pravljenje tabele
+
+podacipsitabela <- podacipsi2017 %>%
+  select (-poštanski_broj)
+
+
  
 
-# Kreiranje podskupa za pol i da li je pas sterilisan/a za drugi stubičasti grafikon
-
-podacipsisterilisanpol <- podacipsi2017 %>%
-  
-  group_by (sterilisan, pol) %>%
-  
-  tally () %>%
-  
-  # Kriranje još jedne varijable koja će se zvati Info da bi mogla da se koristi za informacije kada se predje kursorom preko grafikona 
-  
-  mutate (Info = paste ('<br>', "Sterilisan/a:", 
-                        
-                        sterilisan, '<br>',
-                        
-                        "Broj ujeda:", n, '<br>',
-                        
-                        "Pol:", pol, '<br>'))
-
-podacipsisterilisanpol$sterilisan <- factor (podacipsisterilisanpol$sterilisan,
-                               levels = c ("Ne", "Da"))
 
 ```
 
-Column {data-width=650} 
+Row 
 -----------------------------------------------------------------------
-### **Koliko psi ujedaju u Nju Jorku** {data-height=250, align=justify}
+### **Koliko psi ujedaju u Nju Jorku** {data-height=350,align=justify}
 
 Ovaj panel prikazuje osnovnu statistiku ujeda pasa u  Nju Jorku u 2017. godini. Podaci prikazuju da je bilo ukupno **`r nrow(podacipsi2017)`** ujeda. Stubičasti grafikon (bar chart) sa desne strane prikazuje koje tri rase pasa su najčešće ujedale. Iako možda postoji izvestan trend koji sugeriše da su **Pit bulovi** najagresivniji, možda je samo slučaj da ih ima znatno više nego drugih rasa pasa u Nju Jorku. **`r podacipsidistrikt[1,1]`** i **`r podacipsidistrikt[2,1]`** su dva distrikta sa najvećim procentom ujeda  **`r podacipsidistrikt[1,3]`%** i **`r podacipsidistrikt[2,3]`%**.
 
-### **Tabela ujeda pasa u Nju Jorku u 2017. godini** {data-height=750}
-
-```{r}
-
-# Koristimo DT paket kako bismo kreirali tabelu
-
-DT :: datatable (podacipsitabela, options = list(
-  bPaginate = TRUE))
-
-```
 
 
-
-
-Column {data-width=350}
------------------------------------------------------------------------
-
-### **Tri rase pasa sa najvećim brojem ujeda u 2017. godini**
+### **Tri rase pasa sa najvećim brojem ujeda u 2017. godini** 
 
 ```{r}
 # Stubičasti grafikon za ujede prema rasi pasa uz pomoć biblioteka ggplot2 i plotly 
@@ -127,29 +95,19 @@ p
 
 ```
 
-### **Ujedi prema polu psa i da li je bio sterilisan/a** {align=center}
+
+
+Row 
+-----------------------------------------------------------------------
+### **Tabela ujeda pasa u Nju Jorku u 2017. godini** {data-height=650}
 
 ```{r}
 
-#Kreiranje drugog stubičastog grafikona uz pomoć ggplot2 i plotly paketa/biblioteka
+# Koristimo DT paket kako bismo kreirali tabelu
 
-p1<- ggplot (data = podacipsisterilisanpol)+
-  
-  geom_col (aes (x = sterilisan, y = n, fill = pol, label = Info)) +
-  
-  scale_fill_manual (values = c('cyan3', 'darkorange', "purple")) +
-  
-  ylab ("Broj ujeda") +
-  
-  theme (legend.position = "none",
-         
-    panel.background = element_blank())
-
-p1<-ggplotly(p1,tooltip = "Info")
-
-p1
+DT :: datatable (podacipsitabela, options = list(
+  bPaginate = TRUE))
 
 ```
-
 
 

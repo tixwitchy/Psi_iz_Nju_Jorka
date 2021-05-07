@@ -75,7 +75,7 @@ install.packages(c("flexdashboard", "tidyverse", "plotly", "DT"))
 
 - Pošto ste instalirali R i R Studio potrebno je da **set a working directory** (postavite direktorijum) gde će se čuvati sav rad na određenom projektu/zadatku.
 
-- Najbolje je da izberete **File/New Project** koji će automatski čuvati podatke na istom mestu.
+- Najbolje je da izberete **File/New Project** koji će automatski čuvati podatke na istom mestu (ali sad to nećemo raditi).
 
 - Pošto smo već otvorili fajl **Psi_iz_Nju_Jorka.Rproj** radni direktorijum je već setovan.
 
@@ -200,7 +200,7 @@ U gornjem levom uglu pritisnite ikonu belog dokument sa plus znakom i izaberite 
 title: "Ujedi pasa u Nju Jorku u 2017. godini"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
+    orientation: rows
     vertical_layout: fill
     theme: united
 ---
@@ -256,7 +256,7 @@ podacipsidistrikt[1, 1]
 ## Tekstualni deo panela-Kod
 ```{r, eval=FALSE}
 
-### **Koliko psi ujedaju u Nju Jorku** {data-height=250, align=justify}
+### **Koliko psi ujedaju u Nju Jorku** {data-height=350,align=justify}
 
 Ovaj panel prikazuje osnovnu statistiku ujeda pasa u  Nju Jorku u 2017. godini. 
 Podaci prikazuju da je bilo ukupno **`r nrow(podacipsi2017)`** ujeda. 
@@ -266,7 +266,7 @@ možda je samo slučaj da ih ima znatno više nego drugih rasa pasa u Nju Jorku.
 **`r podacipsidistrikt[1,1]`** i **`r podacipsidistrikt[2,1]`** 
   su dva distrikta sa najvećim procentom ujeda  **`r podacipsidistrikt[1,3]`%** i **`r podacipsidistrikt[2,3]`%**.
 
-### **Tabela ujeda pasa u Nju Jorku u 2017. godini** {data-height=750}
+### **Tri rase pasa sa najvećim brojem ujeda u 2017. godini** 
 
 ```
 
@@ -279,27 +279,6 @@ možda je samo slučaj da ih ima znatno više nego drugih rasa pasa u Nju Jorku.
 <section>
 <img class="center" height="500" src="images/dogcongrats.gif">
 </section>
-## Kreiranje pretražive tabele
-
-Prvo ćemo u Setup delu našeg templejta za panel, napraviti podskup koji neće sadržati kolonu poštanski broj.
-```{r}
-podacipsitabela <- podacipsi2017 %>%
-  select (-poštanski_broj)
-```
-
-Potom ćemo dodati pretraživu tabelu odmah ispod naslova **Tabela ujeda pasa u Nju Jorku u 2017. godini**  uz pomoć DT paketa. 
-```{r, eval=FALSE}
-DT :: datatable (podacipsitabela, options = list(
-  bPaginate = TRUE))
-
-```
-
-
-## Kako nam panel napreduje
-<section>
-<img class="center" height="500" src="images/datatable.png">
-</section>
-
 
 ## Kreiranje stubičastog grafikona
 
@@ -352,7 +331,7 @@ Ona vam omogućava da napravite grafikon u vidu slojeva kako biste kreirali graf
 
 ## Kreiranje stubičastog grafikona
 
-Umesto Chart B napisaćemo: **Tri rase pasa sa najvećim brojem ujeda u 2017. godini** i koristićemo ovaj kod za izradu grafikon.
+Umesto Chart A napisaćemo: **Tri rase pasa sa najvećim brojem ujeda u 2017. godini** i koristićemo ovaj kod za izradu grafikon.
 
 ```{r, eval=FALSE}
 
@@ -417,82 +396,22 @@ podacipsirasa$rasa <- factor (podacipsirasa$rasa,
 <img class="center" height="400" src="images/giphystagef.gif" >
 </section>
 
-## Stubičasti grafikon sterilisanih pasa
+## Kreiranje pretražive tabele
 
-U ovoj poslednjoj fazi, kreiraćemo malo kompleksniji grafikon koji će prikazivati koliko je pasa  bilo sterilisano i prema polu. Ponovo ćemo u **Setup delu** kreirati podskup koji je grupisan na osnovu ova sva parametra. Na to ćemo dodati još jednu kolonu koja će se koristiti za informacije koje će se prikazivati kada se pređe preko grafikona.
+Prvo ćemo u Setup delu našeg templejta za panel, napraviti podskup koji neće sadržati kolonu poštanski broj.
 ```{r}
-podacipsisterilisanpol <- podacipsi2017 %>%
-  
-  group_by (sterilisan, pol) %>% 
-  
-  tally () %>%        #izračunava broj ujeda na osnovu ove dve grupe
-  
-  mutate (Info = paste ('<br>', "Sterilisan:", # Kreiranje nove varijable Info koja će služiti za prikazivanje informacija
-                        sterilisan, '<br>',#"<br>" se koristi da naznači kraj reda
-                        
-                        "Broj ujeda:", n, '<br>',
-                        "Pol:", pol, '<br>'))  
+podacipsitabela <- podacipsi2017 %>%
+  select (-poštanski_broj)
 ```
 
-## Promena varijable karakter u faktor
+Prvo ćemo naslov **Tabela ujeda pasa u Nju Jorku u 2017. godini**  {data-height=650} umesto Chart B. Ovom prilikom ćemo pobrisati chart C i sve ispod jer nam taj kvadrat zapravo ni ne treba. Potom ćemo dodati pretraživu tabelu uz pomoć DT paketa odmah ispod ovog naslova. 
+```{r, eval=FALSE}
+DT :: datatable (podacipsitabela, options = list(
+  bPaginate = TRUE))
 
-Ponovo ćemo promeniti redosled u varijabli sterilisan i pretvoriti je u faktor
-```{r}
-# Promena nivoa kako bi se redosled na grafikonu ispravno prikazao
-
-podacipsisterilisanpol$sterilisan <- factor (podacipsisterilisanpol$sterilisan ,
-                               levels = c ("Ne","Da"))
 ```
 
 
-## Podskup podacipsisterilisanpol
-
-```{r, echo=FALSE}
-
-kableExtra:: kable(podacipsisterilisanpol)
-
-```
-
-## Kreiranje poslednjeg grafikona
-
-Umesto  Chart C napisaćemo i centrirati naslov: **Ujedi prema polu psa i da li je bio sterilisan/a** {align=center} i koristićemo sledeći kod za grafikon:
-```{r,eval=FALSE,warning=FALSE}
-p1<- ggplot (data = podacipsisterilisanpol)+ #podaci za mapiranje
-  
-  geom_col (aes (x = sterilisan, y = n,  #geometrijski objekat i estetsko mapiranje 
-                 
-                 fill = pol, label = Info)) + #kreiranje jos jedne dimenzije za pol u samom stubus i upotreba kolone info za prikazivanje informacija
-  
-  scale_fill_manual (values = c('cyan3', 'darkorange', "purple")) + #dodeljivanje boja za pol
-  
-  ylab ("Broj ujeda") +
-  
-  theme (legend.position = "none",
-    panel.background = element_blank())
-
-p1<-ggplotly(p1, tooltip = "Info") # dodavanje u plotly funkciji informacije iz kolone Info
-p1
-```
-
-## Poslednji grafikon
-
-```{r,echo=FALSE,warning=FALSE}
-p1<- ggplot (data = podacipsisterilisanpol)+
-  
-  geom_col (aes (x = sterilisan, y = n, fill = pol, label = Info)) +
-  
-  scale_fill_manual (values = c('cyan3', 'darkorange', "purple")) +
-  
-  ylab ("Broj ujeda") +
-  
-  theme (legend.position = "none",
-         
-    panel.background = element_blank())
-
-p1<-ggplotly(p1,tooltip = "Info")
-
-p1
-```
 
 ## Panel je završen 
 
