@@ -10,7 +10,7 @@ output:
           
  
 ---
-## **Vežba: skup podataka ujedi pasa u Nju Jorku** 
+## **Vežba: skup podataka ujedi pasa u Njujorku** 
  <center> Tijana Blagojev - R-Ladies Belgrade </center>
 
 
@@ -52,7 +52,7 @@ output:
 
 - Samo ćemo se dotaći nekoliko R paketa poput delova paketa tidyverse (dplyr i ggplot2) 
 
-- Napravićemo [panel sa informacijama koje se nalaze u skupu podataka ujedi pasa](https://tixwitchy.github.io/Psi_iz_Nju_Jorka/Psi-iz-Nju-Jorka.html)
+- Napravićemo [panel sa informacijama koje se nalaze u skupu podataka ujedi pasa](https://tixwitchy.github.io/Psi_iz_Nju_Jorka/Psi-iz-Njujorka.html)
 
 ## Vežba{align=right}
 
@@ -95,7 +95,7 @@ Medjutim, kako biste pristupili funkcijama ili podacima koje su drugi ljudi napr
 
 **R paket** je skup funkcija (koda), podataka, dokumentacije, vinjeta (primera).
 
-**Važna napomena** - R je **osetljiv na velika i mala slova** tako da pripazite na pisanje i velika i mala slova!
+**Važna napomena** - R je **osetljiv na velika i mala slova** tako da pripazite na pisanje i na velika i mala slova!
 
 ## Paketi i biblioteke-Kod
 
@@ -149,7 +149,7 @@ Set podataka o ujedima pasa je preuzet iz [R paketa nycdogs Kierana Healy-ja](ht
 
 ## Pregledanje seta podataka
 
-Prvo ćemo da unesemo i pregledamo csv fajl o ujedima pasa u Nju Jorku za 2017. godinu uz pomoć sledećeg koda:
+Prvo ćemo da unesemo i pregledamo csv fajl o ujedima pasa u Njujorku za 2017. godinu uz pomoć sledećeg koda:
 ```{r, message=FALSE}
 
 podacipsi2017 <- read_csv ("datadogs2017.csv")
@@ -197,7 +197,7 @@ U gornjem levom uglu pritisnite ikonu belog dokument sa plus znakom i izaberite 
 ## Uredjivanje izgleda Flexdashboard/panela
 ```{r,eval=FALSE}
 ---
-title: "Ujedi pasa u Nju Jorku u 2017. godini"
+title: "Ujedi pasa u Njujorku u 2017. godini"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -237,7 +237,7 @@ podacipsidistrikt <- podacipsi2017 %>%
 </section>
 
 
-## Broj ujeda prema distriktu u Nju Jorku
+## Broj ujeda prema distriktu u Njujorku
 
 Sada ćemo pogledati prvih 5 distrikta sa najvećim brojem ujeda
 
@@ -256,13 +256,13 @@ podacipsidistrikt[1, 1]
 ## Tekstualni deo panela-Kod
 ```{r, eval=FALSE}
 
-### **Koliko psi ujedaju u Nju Jorku** {data-height=350,align=justify}
+### **Koliko psi ujedaju u Njujorku** {data-height=350, align=justify}
 
-Ovaj panel prikazuje osnovnu statistiku ujeda pasa u  Nju Jorku u 2017. godini. 
+Ovaj panel prikazuje osnovnu statistiku ujeda pasa u  Njujorku u 2017. godini. 
 Podaci prikazuju da je bilo ukupno **`r nrow(podacipsi2017)`** ujeda. 
 Stubičasti grafikon (bar chart) sa desne strane prikazuje koje tri rase pasa su najčešće ujedale. 
 Iako možda postoji izvestan trend koji sugeriše da su **Pit bulovi** najagresivniji,
-možda je samo slučaj da ih ima znatno više nego drugih rasa pasa u Nju Jorku. 
+možda je samo slučaj da ih ima znatno više nego drugih rasa pasa u Njujorku. 
 **`r podacipsidistrikt[1,1]`** i **`r podacipsidistrikt[2,1]`** 
   su dva distrikta sa najvećim procentom ujeda  **`r podacipsidistrikt[1,3]`%** i **`r podacipsidistrikt[2,3]`%**.
 
@@ -275,7 +275,7 @@ možda je samo slučaj da ih ima znatno više nego drugih rasa pasa u Nju Jorku.
     <img height="300" src="images/textualpart.png">
     <img height="270" src="images/resulttextual.png">
 </section>
-## Čestitam upravo ste programirali i "ištrikali" vaš prvi panel!!!
+## Čestitam upravo ste programirali i "ištrikali" vaš prvi deo panela!!!
 <section>
 <img class="center" height="500" src="images/dogcongrats.gif">
 </section>
@@ -331,7 +331,7 @@ Ona vam omogućava da napravite grafikon u vidu slojeva kako biste kreirali graf
 
 ## Kreiranje stubičastog grafikona
 
-Umesto Chart A napisaćemo: **Tri rase pasa sa najvećim brojem ujeda u 2017. godini** i koristićemo ovaj kod za izradu grafikon.
+Koristićemo ovaj kod za izradu grafikona:
 
 ```{r, eval=FALSE}
 
@@ -404,7 +404,7 @@ podacipsitabela <- podacipsi2017 %>%
   select (-poštanski_broj)
 ```
 
-Prvo ćemo naslov **Tabela ujeda pasa u Nju Jorku u 2017. godini**  {data-height=650} umesto Chart B. Ovom prilikom ćemo pobrisati chart C i sve ispod jer nam taj kvadrat zapravo ni ne treba. Potom ćemo dodati pretraživu tabelu uz pomoć DT paketa odmah ispod ovog naslova. 
+Prvo ćemo naslov **Tabela ujeda pasa u Njujorku u 2017. godini**  {data-height=650} umesto Chart B. Ovom prilikom ćemo obrisati Chart C i sve ispod jer nam taj kvadrat zapravo ni ne treba. Potom ćemo dodati pretraživu tabelu uz pomoć DT paketa odmah ispod ovog naslova. 
 ```{r, eval=FALSE}
 DT :: datatable (podacipsitabela, options = list(
   bPaginate = TRUE))
@@ -420,7 +420,10 @@ DT :: datatable (podacipsitabela, options = list(
 <img class="center" height="500" src="images/Completedashboard.png"> </a>
 </section>
 
-
+## Kidate :)
+<section>
+<img class="center" height="500" src="images/rock.gif">
+</section>
 
 ## Obratite pažnju i vodite računa
 
@@ -438,13 +441,6 @@ DT :: datatable (podacipsitabela, options = list(
 
 - Zato je poželjno da eksperti u svojim oblastima znaju da naprave ovakve vizuelne prikaze. Oni već poseduju ekspertizu na osnovu koje mogu da izvuku ispravne zaključke. Ovaj  alat može da im pomogne da dođu do šire publike kao i da im omogući da prate i doprinose radu drugih stručnjaka. 
 
-## Primer kombinovanja Flexdashboards i Shiny
-
-<section>
-<a href="https://tixwitchy.shinyapps.io/minority_media/">
-<img class="center" height="500" src="images/Minoritymedia.png"> </a>
-</section>
-
 ## Gde da objavite vaše kreacije
 
 - [Netlify](https://app.netlify.com/drop)
@@ -452,6 +448,15 @@ DT :: datatable (podacipsitabela, options = list(
 - [Github stranice](https://pages.github.com/)
 
 - Ako vaš panel sadrži shiny elemente možete da ih objavite putem [Shinyapps.io](https://shiny.rstudio.com/deploy/)
+
+## Primer kombinovanja Flexdashboards i Shiny
+
+<section>
+<a href="https://tixwitchy.shinyapps.io/minority_media/">
+<img class="center" height="500" src="images/Minoritymedia.png"> </a>
+</section>
+
+
 
 ## Dodatni resursi
 
