@@ -52,16 +52,16 @@ output:
 
 - Samo ćemo se dotaći nekoliko R paketa poput delova paketa tidyverse (dplyr i ggplot2) 
 
-- Napravićemo [panel sa informacijama koje se nalaze u skupu podataka ujedi pasa](https://tixwitchy.github.io/Psi_iz_Nju_Jorka/Psi-iz-Njujorka.html)
+- Napravićemo [panel sa informacijama koje se nalaze u skupu podataka ujedi pasa](https://tixwitchy.github.io/Psi_iz_Njujorka/Psi-iz-Njujorka.html)
 
 ## Vežba{align=right}
 
 - Sa linka preuzmite folder sa vežbom:
- https://github.com/tixwitchy/Psi_iz_Nju_Jorka
+ https://github.com/tixwitchy/Psi_iz_Njujorka
 
 - Klinkite na **Clone** zeleno dugme i potom **Download ZIP**
 
-- Otvorite fajl **Psi_iz_Nju_Jorka.Rproj** 
+- Otvorite fajl **Psi_iz_Njujorka.Rproj** 
 
 - U levom donjem delu R Studio-a tzv. konzole (Console) kopirajte sledeći kod i kliknite enter:
 
@@ -77,7 +77,7 @@ install.packages(c("flexdashboard", "tidyverse", "plotly", "DT"))
 
 - Najbolje je da izberete **File/New Project** koji će automatski čuvati podatke na istom mestu (ali sad to nećemo raditi).
 
-- Pošto smo već otvorili fajl **Psi_iz_Nju_Jorka.Rproj** radni direktorijum je već setovan.
+- Pošto smo već otvorili fajl **Psi_iz_Njujorka.Rproj** radni direktorijum je već setovan.
 
 
 
@@ -416,7 +416,7 @@ DT :: datatable (podacipsitabela, options = list(
 ## Panel je završen 
 
 <section>
-<a href="https://tixwitchy.github.io/Psi_iz_Nju_Jorka/Psi-iz-Nju-Jorka.html">
+<a href="https://tixwitchy.github.io/Psi_iz_Njujorka/Psi-iz-Njujorka.html">
 <img class="center" height="500" src="images/Completedashboard.png"> </a>
 </section>
 
@@ -464,7 +464,7 @@ DT :: datatable (podacipsitabela, options = list(
 - [Flexdashboards i Shiny](https://rmarkdown.rstudio.com/flexdashboard/shiny.html)
 - [Sjajan sajt Allison Horst za učenje R-a](https://allisonhorst.shinyapps.io/edge-of-the-tidyverse/)
 - [R-ladies Belgrade meetup stranica](https://www.meetup.com/rladies-belgrade/)
-- [Moj kontakt ukoliko želite da mi pokažete vaše panele :)](mailto:etijana@gmail.com)
+- [Moj kontakt](mailto:etijana@gmail.com)
 
 
 
