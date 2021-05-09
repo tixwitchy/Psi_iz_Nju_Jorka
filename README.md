@@ -1,1 +1,1 @@
-# Psi_iz_Nju_Jorka
+# Psi_iz_Njujorka
